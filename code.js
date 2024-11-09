@@ -26,13 +26,14 @@ function quicksort(array) {
 function split(arr, low, hi){
     let pivot, i;
     if (low>=hi) return;
-    pivot = low;
-    for (i= low +1; i<=hi; i++){
-        if(arr[i]<arr[low]){
-            arr[low]= arr[i];
+    pivot = [low];
+    i = low +1;
+    for (let j = 0; i<=hi; i++){
+        if(arr[j]<pivot){
+            arr[j]= arr[i];
         }
 
     }
-
-
+    arr[low] = arr[i-1];
+    return i-1;
 }
