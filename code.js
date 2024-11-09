@@ -8,14 +8,16 @@ function quicksort(array) {
     stack.push(start);
     stack.push(end);
     while(stack.length > 0){
-        stack.pop(start);
-        stack.pop(end);
+        start = stack.pop();
+        end = stack.pop();
         let pivotIn = split(array, start, end);
         if (pivotIn - 1 > start){
-            stack.push(start, pivotIn-1);
+            stack.push(start);
+            stack.push(pivotIn-1);
         }
         if(pivotIn + 1 < end){
-            stack.push(pivotIn+1, end);
+            stack.push(pivotIn+1);
+            stack.push(end);
         }
     }
     return array;
@@ -24,13 +26,14 @@ function quicksort(array) {
 function split(arr, low, hi){
     let pivot, i;
     if (low>=hi) return;
-    pivot = [low];
+    pivot = arr[low];
     i = low +1;
-    for (let j = 0; i<=hi; i++){
+    for (let j = low + 1; j<=hi; j++){
         if(arr[j]<pivot){
-            arr[j]= arr[i];
+            [arr[i], arr[j]] = [arr[j], arr[i]]; 
+            i++;
         }
     }
-    arr[low] = arr[i-1];
+    [arr[low], arr[i-1]] = [arr[i-1], arr[low]];
     return i-1;
 }
