@@ -24,10 +24,8 @@ function quicksort(array) {
 }
 
 function split(arr, low, hi){
-    let pivot, i;
-    if (low>=hi) return;
-    pivot = arr[low];
-    i = low +1;
+    let pivot = arr[low];
+    let i = low +1;
     for (let j = low + 1; j<=hi; j++){
         if(arr[j]<pivot){
             [arr[i], arr[j]] = [arr[j], arr[i]]; 
