@@ -23,15 +23,29 @@ function quicksort(array) {
     return array;
 }
 
-function split(arr, low, hi){
+function split(arr, low, hi) {
     let pivot = arr[low];
-    let i = low +1;
-    for (let j = low + 1; j<=hi; j++){
-        if(arr[j]<pivot){
-            [arr[i], arr[j]] = [arr[j], arr[i]]; 
-            i++;
+    let left = low + 1;
+    let right = hi;
+    
+    while (left <= right) {
+        // Move left pointer to the right as long as elements are less than pivot
+        while (left <= right && arr[left] < pivot) {
+            left++;
+        }
+        // Move right pointer to the left as long as elements are greater than pivot
+        while (left <= right && arr[right] > pivot) {
+            right--;
+        }
+        // If left is still less than right, swap elements at left and right
+        if (left < right) {
+            [arr[left], arr[right]] = [arr[right], arr[left]];
+            left++;
+            right--;
         }
     }
-    [arr[low], arr[i-1]] = [arr[i-1], arr[low]];
-    return i-1;
+    
+    // Place pivot in its correct position
+    [arr[low], arr[right]] = [arr[right], arr[low]];
+    return right;  // Return pivot's final position
 }
