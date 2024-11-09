@@ -23,25 +23,15 @@ function quicksort(array) {
     return array;
 }
 
-function split(arr, low, hi) {
+function split(arr, low, hi){
     let pivot = arr[low];
-    let left = low + 1;
-    let right = hi;
-    
-    while (left <= right) {
-        while (left <= right && arr[left] < pivot) {
-            left++;
-        }
-        while (left <= right && arr[right] > pivot) {
-            right--;
-        }
-        if (left < right) {
-            [arr[left], arr[right]] = [arr[right], arr[left]];
-            left++;
-            right--;
+    let i = low +1;
+    for (let j = low + 1; j<=hi; j++){
+        if(arr[j]<pivot){
+            [arr[i], arr[j]] = [arr[j], arr[i]]; 
+            i++;
         }
     }
-    
-    [arr[low], arr[right]] = [arr[right], arr[low]];
-    return right; 
+    [arr[low], arr[i-1]] = [arr[i-1], arr[low]];
+    return i-1;
 }
