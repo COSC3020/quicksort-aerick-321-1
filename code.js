@@ -17,9 +17,7 @@ function quicksort(array) {
         if(pivotIn + 1 < end){
             stack.push(pivotIn+1, end);
         }
-
     }
-    
     return array;
 }
 
@@ -32,7 +30,6 @@ function split(arr, low, hi){
         if(arr[j]<pivot){
             arr[j]= arr[i];
         }
-
     }
     arr[low] = arr[i-1];
     return i-1;
