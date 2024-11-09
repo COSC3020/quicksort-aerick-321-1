@@ -29,15 +29,12 @@ function split(arr, low, hi) {
     let right = hi;
     
     while (left <= right) {
-        // Move left pointer to the right as long as elements are less than pivot
         while (left <= right && arr[left] < pivot) {
             left++;
         }
-        // Move right pointer to the left as long as elements are greater than pivot
         while (left <= right && arr[right] > pivot) {
             right--;
         }
-        // If left is still less than right, swap elements at left and right
         if (left < right) {
             [arr[left], arr[right]] = [arr[right], arr[left]];
             left++;
@@ -45,7 +42,6 @@ function split(arr, low, hi) {
         }
     }
     
-    // Place pivot in its correct position
     [arr[low], arr[right]] = [arr[right], arr[low]];
-    return right;  // Return pivot's final position
+    return right; 
 }
