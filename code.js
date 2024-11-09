@@ -8,8 +8,8 @@ function quicksort(array) {
     stack.push(start);
     stack.push(end);
     while(stack.length > 0){
-        start = stack.pop();
         end = stack.pop();
+        start = stack.pop();
         let pivotIn = split(array, start, end);
         if (pivotIn - 1 > start){
             stack.push(start);
