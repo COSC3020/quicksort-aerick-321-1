@@ -1,5 +1,5 @@
 function quicksort(array) {
-    if (array.length < 1){
+    if (array.length < 2){
         return array;
     }
     let stack = [];
